@@ -6,10 +6,9 @@
 
 
 class Node:
-    def __init__(self, data):
+    def __init__(self, data = None):
         self.data = data
         self.next = None
-        self.prev = None
     
 class SingleLinkedList:
     def __init__(self):
@@ -17,10 +16,21 @@ class SingleLinkedList:
         self.Tail = None
         self.sizelen = 0
 
-    def append(self, newdata, pos= None):
-         if pos == None:
-            node = Node(newdata)
-            self.Tail 
+    def append(self, newdata, index = None):
+        
+        if index == None:
+            new_node = Node(newdata)
+            if self.Tail:
+                self.Tail.next = new_node
+            else:
+                self.Tail, self.Head = new_node
+            self.sizelen += 1
+    elif:
+
+
+current_index = 0 
+while current_index != index:
+    
 
 
 
@@ -45,8 +55,9 @@ class SingleLinkedList:
 
 # Test cases
 def test_case(Node):
+    len
     Node('Spam')
     Node('Eggs')
     Node('Ham')
-
+        
 #test_case(Node)
