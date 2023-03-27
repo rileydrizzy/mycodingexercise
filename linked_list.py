@@ -139,7 +139,7 @@ print(Singlelist.list_size())
 # DOUBLE LINKED LIST
 
 
-class DoubleList:
+class DoubleListNew:
     '''
     explain double
     '''
@@ -236,11 +236,11 @@ class DoubleList:
             current_tail = current_tail.prev
             yield value
 
-    def remove(self,data, node_position=None):
+    def remove(self, data=None, node_position= 'None'):
         '''
         remove
         '''
-        assert node_position in ['first', 'last', None]
+        assert node_position in ['first', 'last', 'None']
 
         if node_position == 'first':
             current_head = self.head
@@ -268,7 +268,7 @@ class DoubleList:
 
 # TEST CASE AREA
 sample = ['dipo', 'james', 'simi', 'ladi', 'biggie', 'tupac']
-Doublelist = DoubleList()
+Doublelist = DoubleListNew()
 for name in sample:
     Doublelist.add(name)
 
@@ -290,11 +290,11 @@ print(Doublelist.list_size())
 print(Doublelist.seacrh('ladi'))
 print(Doublelist.seacrh('ladipo'))
 
-DoubleList.remove(node_position='first')
-DoubleList.remove(node_position='last')
-DoubleList.remove('two')
-DoubleList.remove('begin')
-DoubleList.remove('self','three')
+Doublelist.remove(node_position='first')
+Doublelist.remove(node_position='last')
+Doublelist.remove('two')
+Doublelist.remove('begin')
+Doublelist.remove('three')
 
 for name in Doublelist.trasvesral():
     print(name)
