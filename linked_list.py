@@ -236,11 +236,34 @@ class DoubleList:
             current_tail = current_tail.prev
             yield value
 
-    def remove(self, data):
+    def remove(self,data, node_position=None):
         '''
         remove
         '''
-        pass
+        assert node_position in ['first', 'last', None]
+
+        if node_position == 'first':
+            current_head = self.head
+            self.head = current_head.next
+            self.size -= 1
+        elif node_position == 'last':
+            current_tail = self.tail
+            self.tail = current_tail.prev
+            self.size -= 1
+        else:
+            current_pointer = self.head
+            previous_pointer = self.head
+            while current_pointer:
+                if current_pointer.data == data:
+                    next_node = current_pointer.next
+                    next_node.prev = current_pointer.prev
+                    previous_pointer.next = current_pointer.next
+                    self.size -= 1
+                    return
+                else:
+                    previous_pointer = current_pointer
+                    current_pointer = current_pointer.next
+            print('Data not in list')
 
 
 # TEST CASE AREA
@@ -266,3 +289,12 @@ print(Doublelist.list_size())
 
 print(Doublelist.seacrh('ladi'))
 print(Doublelist.seacrh('ladipo'))
+
+DoubleList.remove(node_position='first')
+DoubleList.remove(node_position='last')
+DoubleList.remove('two')
+DoubleList.remove('begin')
+DoubleList.remove('self','three')
+
+for name in Doublelist.trasvesral():
+    print(name)
