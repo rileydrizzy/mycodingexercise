@@ -14,4 +14,4 @@ I would like to express my thanks to Chip Huyen (@chiphuyen) who provided inspir
 
 ## Linked Lists 
 
-* List class (linked_list.py)
+* Single Linked List (linked_list.py)
