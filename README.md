@@ -15,3 +15,8 @@ I would like to express my thanks to Chip Huyen (@chiphuyen) who provided inspir
 ## Linked Lists 
 
 * Single Linked List (linked_list.py)
+* Double Linked List 
+* Circular Single Linked List
+* Circular Double Linked List
+
+## Stack and Queues
