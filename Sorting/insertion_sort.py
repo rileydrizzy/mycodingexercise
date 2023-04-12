@@ -7,12 +7,11 @@ def insertion_sort(arr):
     '''
     explain
     '''
-    
 
 
 
 
 
 # TEST CASE
-sample = [random.randint(1, 20) for n in range(10)]
+sample = [5,4,3,2,1]
 print(sample)

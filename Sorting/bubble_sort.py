@@ -17,6 +17,6 @@ def bubble_sort(arr):
 
 
 # TEST CASES AREA
-sample = [2, 46, 7, 32, 8, 32, 4, 2, 15, 67, 9]
+sample = [2, 46, 7, 32, 8, 32, 4, 2, 15, 67, 9 ]
 bubble_sort(sample)
 print(sample)
