@@ -100,12 +100,11 @@ class SingleList:
         '''
         removes
         '''
-        match node_pos:
-            case 'first':
                 
         
 
-# TEST CASES
+#TEST CASES
+
 sample = ['ladi', 'liver', 'cool', 'breeze', 'nice', 'cat', 'dog']
 Singlelist = SingleList()
 for word in sample:

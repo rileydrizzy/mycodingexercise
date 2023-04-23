@@ -1,12 +1,14 @@
 '''
-Explain selection sort
+Selection sort is an algorithm that sort an unsorted array in ascending order
+It has a time complexity BIG O(n^2) of and Space Complexity of Constant space O(1)
 '''
-import random
+import random # use to create test cases
 
 
 def selection_sort(arr):
     '''
-    explain
+    The function takes in an array and return the 
+    array sorted in ascending order
     '''
     iteration_no = len(arr)
     for j in range(iteration_no):
@@ -17,8 +19,6 @@ def selection_sort(arr):
         arr[j], arr[low_value_index] = arr[low_value_index], arr[j]
 
 # TEST CASE AREA
-sample = [[random.randint(1, 30)for j in range(15)] for n in range(3)]
-for n in sample:
-    print('Unsorted array', n)
-    selection_sort(n)
-    print('Sorted array using selection sort', n)
+sample_list = [[random.randint(1, 30)for j in range(15)] for n in range(6)]
+for array in sample_list:
+    print(selection_sort(array) == array.sort()) #Checks and print true if array is sorted

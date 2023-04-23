@@ -1,13 +1,15 @@
 '''
-Searching 
+Binary Search is a searching alogrithm that looks for a target in a sorted list,
+by using divide and conquer techqniues. This Search algorithm has a time complexity of 
+BIG O(logn) and Space comlextiy of Constant space O(1).
 '''
-import random
-# Binary Search
-
+import random # use to create test cases
 
 def binary_search(arr, key):
     '''
-    explain
+    The function takes in a sorted array and target
+    returns the index of the target if found
+    otherwise print "Not in the list"
     '''
     start_index = 0
     end_index = len(arr) - 1
@@ -15,20 +17,17 @@ def binary_search(arr, key):
         middle_index = (start_index + end_index) // 2
         if key == arr[middle_index]:
             return middle_index
-        elif key > arr[middle_index]:
+        if key > arr[middle_index]:
             start_index = middle_index + 1
         elif key < arr[middle_index]:
             end_index = middle_index - 1
     return "Not in the List"
 
 
-# TEST CASE
-sample = [[random.randint(1,30,) for j in range(15)] for n in range(5)]
-for n in sample:
-    n.sort()
-    random_index = random.randint(0,14)
-    item = n[random_index]
-    print('List and key')
-    print(n, item )
-    print('key index')
-    print(binary_search(n, item))
+#TEST CASE
+sample_list = [[random.randint(1,40,) for j in range(15)] for n in range(5)]
+for array in sample_list:
+    array.sort()
+    item = random.randint(0,14)
+    print(f'List --> {array} \ntarget --> {item}')
+    print(f'key index --> {binary_search(array,item)}')

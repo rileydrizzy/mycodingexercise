@@ -1,23 +1,25 @@
 '''
-merge sort
+Merge sort is a sorting algorithm that sort an unsorted array in ascending order
+It use divide and conquer technique, and also recursive technique in it approach
+It has a time complexity of and space complextiy of 
 '''
-import random
+import random # use to create test cases
 
 
 def merge_sort(arr):
     '''
-    explain func
+    This func takes in an array
     '''
     len_arr = len(arr)
     if len_arr == 1:
         return arr
-    else:
-        mid_point = len_arr//2
-        first_half = arr[:mid_point]
-        second_half = arr[mid_point:]
-        first_sub = merge_sort(first_half)
-        second_sub = merge_sort(second_half)
-        return merge(first_sub, second_sub)
+    mid_point = len_arr//2
+    first_half = arr[:mid_point]
+    second_half = arr[mid_point:]
+    #
+    first_sub = merge_sort(first_half)
+    second_sub = merge_sort(second_half)
+    return merge(first_sub, second_sub)
 
 
 def merge(first_sub, second_sub):
@@ -44,7 +46,7 @@ def merge(first_sub, second_sub):
 # TEST CASE AREA
 
 
-sample = [[random.randint(1, 30) for k in range(10)] for n in range(5)]
-for num in sample:
+sample_list= [[random.randint(1, 30) for k in range(10)] for n in range(5)]
+for num in sample_list:
     print(f'Unsoretd -> {num}')
-    print(f'Soretd -> {merge_sort(num)== sorted(num)}')
+    print(f'Sorted -> {merge_sort(num)== sorted(num)}')
