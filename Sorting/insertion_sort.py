@@ -2,16 +2,13 @@
 explain  
 '''
 import random
-
-def insertion_sort(arr):
-    '''
-    explain
-    '''
-
-
-
+from merge_sort import merge_sortr
 
 
 # TEST CASE
-sample = [5,4,3,2,1]
-print(sample)
+def test_case():
+    sample = [5, 4, 3, 2, 1]
+    print(sample)
+    print(merge_sortr(sample))
+
+test_case()

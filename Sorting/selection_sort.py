@@ -17,8 +17,9 @@ def selection_sort(arr):
             if arr[low_value_index] > arr[k]:
                 low_value_index = k
         arr[j], arr[low_value_index] = arr[low_value_index], arr[j]
+    return arr
 
 # TEST CASE AREA
 sample_list = [[random.randint(1, 30)for j in range(15)] for n in range(6)]
 for array in sample_list:
-    print(selection_sort(array) == array.sort()) #Checks and print true if array is sorted
+    print(selection_sort(array) == sorted(array)) #Checks and print true if array is sorted

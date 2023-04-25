@@ -7,7 +7,7 @@ A Linked list is a
 
 class Node:
     '''
-    node to 
+    A node to contain the data and pointer
     '''
 
     def __init__(self, data=None):

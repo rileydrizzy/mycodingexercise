@@ -5,8 +5,7 @@ It has a time complexity of BIG O (nlogn) and space complextiy of BIG O (n)
 '''
 import random # use to create test cases
 
-
-def merge_sort(arr):
+def merge_sortr(arr):
     '''
     It takes in an array and divides it
     And then pass it to the merge function and return a sorted list
@@ -18,8 +17,8 @@ def merge_sort(arr):
     first_half = arr[:mid_point]
     second_half = arr[mid_point:]
     #Each half of the array is pass back to the function, recursively
-    first_sub = merge_sort(first_half)
-    second_sub = merge_sort(second_half)
+    first_sub = merge_sortr(first_half)
+    second_sub = merge_sortr(second_half)
     return merge(first_sub, second_sub) # returns a sorted array
 
 
@@ -49,7 +48,12 @@ def merge(first_sub, second_sub):
 
 # TEST CASE AREA
 
-sample_list= [[random.randint(1, 30) for k in range(10)] for n in range(5)]
-for num in sample_list:
-    print(f'Unsoretd -> {num}')
-    print(f'Sorted -> {merge_sort(num)== sorted(num)}')
+def test_case():
+    '''
+    runs test cases for the merge sort algorithm
+    '''
+    sample_list= [[random.randint(1, 30) for k in range(10)] for n in range(5)]
+    for num in sample_list:
+        print(f'Unsoretd -> {num}')
+        print(f'Sorted -> {merge_sortr(num)== sorted(num)}')
+test_case()
