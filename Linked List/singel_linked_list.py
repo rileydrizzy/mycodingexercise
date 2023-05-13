@@ -3,8 +3,9 @@ A Linked list is a data structure. It consist of chaining nodes that contains da
 and pointers sequentially. Thereby linking them all together
 It uses the pointers to point to the next node. 
 It's fast in inserting and deleting at either head or tail of the linked list
+
 '''
-from typing import Literal  # ex
+from typing import Literal
 
 class Node(object):
     '''
@@ -15,21 +16,35 @@ class Node(object):
         self.next = None
 
 class SingleList(object):
-    '''
-    A Single Linked List
-    '''
-    def __init__(self):
-        self._head = None
-        self._tail = None
-        self._size = 0
+     """
+     A single linked list data struture
+     
+     Attributes
+     ----------
+     head : object
+            a reference to the first data of linked list
+     
+     tail : object
+            a reference to the last data of linked list
+     
+     size : int
+            the size of the linked list
+        Methods
+    -------
+    says(sound=None)
+        Prints the animals name and what sound it makes
+    """
+     def __init__(self):
+       self._head = None
+       self._tail = None
+       self._size = 0
 
-    def insert(self, data, index=None):
+   def insert(self, data, index=None):
         '''
         For inserting data to the Linked list
-        It takes in data and an index, and insert the data at the given index
-        If index is None, it insert the data at the end of the Linked List
         '''
-        node = Node(data)  # creates a node with the data
+        node = Node(data)
+        #
         if index is None:
             if self._head is None:  # insert the node as the head if there are no element in it
                 self._head = node
@@ -44,7 +59,7 @@ class SingleList(object):
                 node.next = self._head
                 self._head = node
                 self._size += 1
-            elif index == (self._size - 1): # if index is the tail, then it insert the node at the tail
+            elif index == (self._size): # if index is the tail, then it insert the node at the tail
                 self._tail.next = node
                 self._tail = node
                 self._size += 1
@@ -63,8 +78,7 @@ class SingleList(object):
                     current = current.next
                     current_pointer_index += 1
                 print("The index is out of bounds")
-
-    def iter(self):
+   def iter(self):
         '''
         it iterate the linked list and 
         '''
@@ -74,23 +88,23 @@ class SingleList(object):
             current = current.next
             yield value
 
-    def ___size__(self):
+   def ___size__(self):
         '''
         returns the size of linked list
         '''
         return self._size
 
-    def search(self, data):
-        '''
-        Search for a data in the linked list and return True if found
-        else it return false
-        '''
-        current = self._head
-        while current:
-            if data == current.data:
-                return True
-            else:
-                current = current.next
+   def search(self, data):
+    """
+    Search for a data in the linked list and return True if found
+    else it return false
+    """
+    current = self._head
+    while current:
+        if data == current.data:
+            return True
+        else:
+            current = current.next
         return False
 
     def delete(self, data, node_pos: Literal['first', 'last', None]):
@@ -106,23 +120,5 @@ def test_cases():
     test case
     '''
     sample = ['ladi', 'liver', 'cool', 'breeze', 'nice', 'cat', 'dog']
-    single_list = SingleList()
-    for word in sample:
-        single_list.insert(word)
-
-    for letter in single_list.iter():
-        print(letter)
-    print(single_list._size())
-
-    single_list.insert('Make', 3)
-    single_list.insert('out', 5)
-
-    for letter in single_list.iter():
-        print(letter)
-    print(single_list._size())
-
-    for letter in single_list.iter():
-        print(letter)
-    print(single_list._size())
 
 test_cases()

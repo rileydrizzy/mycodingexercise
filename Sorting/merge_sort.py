@@ -19,7 +19,7 @@ def merge_sortr(arr):
     #Each half of the array is pass back to the function, recursively
     first_sub = merge_sortr(first_half)
     second_sub = merge_sortr(second_half)
-    return merge(first_sub, second_sub) # returns a sorted array
+    return merge(first_sub, second_sub)
 
 
 def merge(first_sub, second_sub):
@@ -56,4 +56,5 @@ def test_case():
     for num in sample_list:
         print(f'Unsoretd -> {num}')
         print(f'Sorted -> {merge_sortr(num)== sorted(num)}')
+
 test_case()

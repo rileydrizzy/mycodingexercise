@@ -20,6 +20,12 @@ def selection_sort(arr):
     return arr
 
 # TEST CASE AREA
-sample_list = [[random.randint(1, 30)for j in range(15)] for n in range(6)]
-for array in sample_list:
-    print(selection_sort(array) == sorted(array)) #Checks and print true if array is sorted
+def test_case():
+    '''
+    runs tests cases on selection sort
+    '''
+    sample_list = [[random.randint(1, 30)for j in range(15)] for n in range(6)]
+    for array in sample_list:
+        print(selection_sort(array) == sorted(array)) #Checks and print true if array is sorted
+
+test_case()

@@ -18,6 +18,13 @@ def bubble_sort(arr):
     return arr
 
 # TEST CASES AREA
-sample_list = [[random.randint(1,40,) for j in range(15)] for n in range(5)]
-for array in sample_list:
-    print(bubble_sort(array) == sorted(array)) #Checks and print true if array is sorted
+
+def test_case():
+    '''
+    Runs tests cases on bubble sort 
+    '''
+    sample_list = [[random.randint(1,40,) for j in range(15)] for n in range(5)]
+    for array in sample_list:
+        print(bubble_sort(array) == sorted(array)) #Checks and print true if array is sorted
+
+test_case()
