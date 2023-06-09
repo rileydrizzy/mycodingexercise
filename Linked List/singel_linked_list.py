@@ -7,7 +7,7 @@ It's fast in inserting and deleting at either head or tail of the linked list
 '''
 from typing import Literal
 
-class Node(object):
+class Node:
     '''
     A node to contain the data and pointer
     '''
@@ -15,8 +15,8 @@ class Node(object):
         self.data = data
         self.next = None
 
-class SingleList(object):
-     """
+class SingleList:
+    """
      A single linked list data struture
      
      Attributes
@@ -30,16 +30,14 @@ class SingleList(object):
      size : int
             the size of the linked list
         Methods
-    -------
-    says(sound=None)
-        Prints the animals name and what sound it makes
     """
-     def __init__(self):
-       self._head = None
-       self._tail = None
-       self._size = 0
+    
+    def __init__(self):
+        self._head = None
+        self._tail = None
+        self._size = 0
 
-   def insert(self, data, index=None):
+    def insert(self, data, index=None):
         '''
         For inserting data to the Linked list
         '''
@@ -78,7 +76,8 @@ class SingleList(object):
                     current = current.next
                     current_pointer_index += 1
                 print("The index is out of bounds")
-   def iter(self):
+    
+    def iter(self):
         '''
         it iterate the linked list and 
         '''
@@ -88,31 +87,29 @@ class SingleList(object):
             current = current.next
             yield value
 
-   def ___size__(self):
+    def ___size__(self):
         '''
         returns the size of linked list
         '''
         return self._size
-
-   def search(self, data):
-    """
-    Search for a data in the linked list and return True if found
-    else it return false
-    """
-    current = self._head
-    while current:
-        if data == current.data:
-            return True
-        else:
-            current = current.next
-        return False
-
+    
+    def search(self, data):
+        """
+        Search for a data in the linked list and return True if found
+        else it return false
+        """
+        current = self._head
+        while current:
+            if data == current.data:
+                return True
+            else:
+                current = current.next
+            return False
+        
     def delete(self, data, node_pos: Literal['first', 'last', None]):
         '''
         removes
         '''
-
-
 
 # TEST CASES
 def test_cases():
