@@ -2,7 +2,6 @@
 explain  
 '''
 import random
-from merge_sort import merge_sortr
 
 
 # TEST CASE

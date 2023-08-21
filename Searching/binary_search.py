@@ -23,7 +23,7 @@ def binary_search(arr, key):
             start_index = middle_index + 1
         elif key < arr[middle_index]:
             end_index = middle_index - 1
-    return "Not in the List"
+    return None
 
 
 #TEST CASE
