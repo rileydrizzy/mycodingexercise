@@ -1,179 +1,216 @@
-'''
+"""
 A Linked list is a 
-'''
+"""
 
-# Node
-
+import random
 
 class Node:
-    '''
-    A node to contain the data and pointer
-    '''
-
+    """_summary_
+    """
     def __init__(self, data=None):
         self.data = data
         self.next = None
         self.prev = None
 
-# DOUBLE LINKED LIST
-
-
-class DoubleListNew:
-    '''
-    explain double
-    '''
-
+class DoubleLinkedList:
+    """doc
+    """
     def __init__(self):
-        '''
-        explain
-        '''
         self.head = None
         self.tail = None
-        self.size = 0
+        self.size_ = 0
 
-    def add(self, data, index=None):
-        '''
-        explain
-        '''
-        node = Node(data)
-        if index is None:
-            if self.head is None:
-                self.head = node
-                self.tail = node
-                self.size += 1
-            else:
+    def insert(self,data):
+        """_summary_
 
-                self.tail.next = node
-                node.prev = self.tail
-                self.tail = node
-                self.size += 1
-        elif index == 0:
-            current_head = self.head
-            current_head.prev = node
-            node.next = current_head
-            self.head = node
-            self.size += 1
+        Parameters
+        ----------
+        data : _type_
+            _description_
+        """
+        node_data = Node(data)
 
-        elif index == (self.size - 1):
-            current_tail = self.tail
-            current_tail.next = node
-            node.prev = current_tail
-            self.tail = node
-            self.size += 1
+        if self.head is None:
+            self.head = self.tail = node_data
+            self.size_ += 1
 
         else:
-            current_pointer = self.head.next
-            previous_pointer = self.head
-            current_pointer_index = 1
-            while current_pointer:
-                if index == current_pointer_index:
-                    previous_pointer.next = node
-                    node.prev = previous_pointer
-                    node.next = current_pointer
-                    current_pointer.prev = node
-                    self.size += 1
-                    return
-                else:
-                    previous_pointer = current_pointer
-                    current_pointer = current_pointer.next
-                    current_pointer_index += 1
-            print('Out of bound')
+            node_data.prev = self.tail
+            self.tail.next = node_data
+            self.tail = node_data
+            self.size_ += 1
 
-    def seacrh(self, data):
-        '''
-        search
-        '''
+    def size(self):
+        """_summary_
+
+        Returns
+        -------
+        _type_
+            _description_
+        """
+        return self.size_
+
+    def _iter(self):
+        current_node= self.head
+        while current_node:
+            current_data = (current_node.data, current_node)
+            current_node = current_node.next
+            yield current_data
+
+    def search(self, data):
+        """_summary_
+
+        Parameters
+        ----------
+        data : _type_
+            _description_
+
+        Returns
+        -------
+        _type_
+            _description_
+        """
+        found = False
+        linked_gen = self._iter()
+        linked_data , _= next(linked_gen)
+        while linked_data is not None:
+            if data == linked_data:
+                found = True
+                return found
+            linked_data, _ = next(linked_gen)
+        return found
+
+    def delete(self,data):
+        """_summary_
+
+        Parameters
+        ----------
+        data : _type_
+            _description_
+
+        Returns
+        -------
+        _type_
+            _description_
+        """
+        done = False
+        if self.head.data == data:
+            self.head = self.head.next
+            self.head.prev = None
+            self.size_ -= 1
+            done = True
+
+        elif self.tail.data == data:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            self.size_ -= 1
+            done = True
+
+        else:
+            curr_node = self.head.next
+            prev_node = self.head
+            while curr_node is not None:
+                if curr_node.data == data:
+                    prev_node.next = curr_node.next
+                    curr_node.next.prev = prev_node
+                    self.size_ -= 1
+                    done = True
+                prev_node = curr_node
+                curr_node = curr_node.next
+            return done
+
+    def traversal(self):
+        """doc
+        """
+        list_ = []
         current = self.head
         while current:
-            if data == current.data:
-                return True
-            else:
-                current = current.next
-        return False
-
-    def list_size(self):
-        '''
-        size
-        '''
-        return self.size
-
-    def trasvesral(self):
-        '''trasversal'''
-        current = self.head
-        while current:
-            value = current.data
+            list_.append(current.data)
             current = current.next
-            yield value
+        return list_
+    def backward_traversal(self):
+        """_summary_
 
-    def reversal(self):
-        '''
-        rev
-        '''
-        current_tail = self.tail
-        while current_tail:
-            value = current_tail.data
-            current_tail = current_tail.prev
-            yield value
+        Returns
+        -------
+        _type_
+            _description_
+        """
+        list_ = []
+        current = self.tail
+        while current:
+            list_.append(current.data)
+            current = current.prev
+        return list_
 
-    def remove(self, data=None, node_position='None'):
-        '''
-        remove
-        '''
-        assert node_position in ['first', 'last', 'None']
-
-        if node_position == 'first':
-            current_head = self.head
-            self.head = current_head.next
-            self.size -= 1
-        elif node_position == 'last':
-            current_tail = self.tail
-            self.tail = current_tail.prev
-            self.size -= 1
-        else:
-            current_pointer = self.head
-            previous_pointer = self.head
-            while current_pointer:
-                if current_pointer.data == data:
-                    next_node = current_pointer.next
-                    next_node.prev = current_pointer.prev
-                    previous_pointer.next = current_pointer.next
-                    self.size -= 1
-                    return
-                else:
-                    previous_pointer = current_pointer
-                    current_pointer = current_pointer.next
-    # bug to be fixed        print('Data not in list')
+# TEST CASE
+def insert_test(array_, sample_linked_list):
+    """run test
+    """
+    try:
+        for num in array_:
+            sample_linked_list.insert(num)
+        print("Insert Succesful")
+    except Exception as error:
+        print(f"Insert failed {error}")
 
 
-# TEST CASE AREA
-sample = ['dipo', 'james', 'simi', 'ladi', 'biggie', 'tupac']
-Doublelist = DoubleListNew()
-for name in sample:
-    Doublelist.add(name)
+def size_of_list(sample_linked_list):
+    """run test
+    """
+    return sample_linked_list.size()
 
-for name in Doublelist.trasvesral():
-    print(name)
-print(Doublelist.list_size())
+def search_test(array_,sample_linked_list):
+    """run test
+    """
+    try:
+        no_iter = 4
+        while no_iter > 0:
+            element = random.choice(array_)
+            result = sample_linked_list.search(element)
+            print(result)
+            if result is False:
+                raise Exception
+            no_iter -= 1
+    except Exception as error:
+        print(f"Search failed {error}")
 
-Doublelist.add('begin', index=0)
-Doublelist.add('two', index=2)
-Doublelist.add('three', index=4)
-Doublelist.add('six', index=6)
-Doublelist.add('nine', index=9)
+def delete_test(array_,sample_linked_list):
+    """run test
+    """
+    try:
+        no_iter = 4
+        while no_iter > 0:
+            element = random.choice(array_)
+            result = sample_linked_list.delete(element)
+            print(result)
+            if result is False:
+                raise Exception
+            no_iter -= 1
+    except Exception as error:
+        print(f"Delete failed {error}")
 
-for name in Doublelist.trasvesral():
-    print(name)
 
-print(Doublelist.list_size())
+def main():
+    """run test
+    """
+    try:
+        sample_array = [random.randint(0, 1000) for num in range(10)]
+        print(sample_array)
+        intger_list = DoubleLinkedList()
+        insert_test(sample_array,intger_list)
+        print(size_of_list(intger_list))
+        forward_list =  intger_list.traversal()
+        print(forward_list)
+        search_test(sample_array,intger_list)
+        print('runing delete_test')
+        delete_test(sample_array,intger_list)
+        print(size_of_list(intger_list))
+        forward_list =  intger_list.traversal()
+        print(forward_list)
+        backward_list =  intger_list.backward_traversal()
+        print(backward_list)
+    except Exception as error:
+        print(error)
 
-print(Doublelist.seacrh('ladi'))
-print(Doublelist.seacrh('ladipo'))
-
-Doublelist.remove(node_position='first')
-Doublelist.remove(node_position='last')
-Doublelist.remove('two')
-Doublelist.remove('begin')
-Doublelist.remove('three')
-
-for name in Doublelist.trasvesral():
-    print(name)
+main()

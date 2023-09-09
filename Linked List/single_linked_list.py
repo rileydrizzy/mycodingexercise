@@ -43,14 +43,14 @@ class LinkedList:
         """
         node_data = Node(data)
         if self.head is None:
-            self.head = node_data
-            self.tail = node_data
+            self.head = self.tail = node_data
             self.size += 1
 
         else:
             self.tail.next = node_data
             self.tail = node_data
             self.size += 1
+
     def _iter(self):
         current = self.head
         while current:
@@ -79,7 +79,6 @@ class LinkedList:
                 return found
             else:
                 linked_data = next(linked_gen)
-
         return found
 
     def delete(self,data):
@@ -107,10 +106,8 @@ class LinkedList:
                     self.size -= 1
                     done = True
                     return done
-
-                else:
-                    prev_node = curr_node
-                    curr_node = curr_node.next
+                prev_node = curr_node
+                curr_node = curr_node.next
         return done
     def traversal(self):
         """run test
@@ -179,14 +176,14 @@ def main():
         intger_list = LinkedList()
         insert_test(sample_array,intger_list)
         print(size_of_list(intger_list))
-        linked_list_ =  intger_list.traversal()
-        print(linked_list_)
+        forward_list =  intger_list.traversal()
+        print(forward_list)
         search_test(sample_array,intger_list)
         print('runing delete_test')
         delete_test(sample_array,intger_list)
         print(size_of_list(intger_list))
-        linked_list_ =  intger_list.traversal()
-        print(linked_list_)
+        forward_list =  intger_list.traversal()
+        print(forward_list)
     except Exception as error:
         print(error)
 
