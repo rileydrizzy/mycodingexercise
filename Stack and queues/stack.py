@@ -1,8 +1,5 @@
 """_summary_
 """
-import random
-
-
 # Stack Implementation with ARRAY
 
 class Stack:
@@ -58,11 +55,6 @@ class Stack:
     def __len__(self):
         return self.len_
 
-# STRESS TEST for Stack(ARRAY)
-
-
-
-
 # Stack Implementation with Linked List
 
 class Node:
@@ -71,5 +63,3 @@ class Node:
     def __init__(self,data= None) -> None:
         self.data = data
         self.next = None
-
-class 
