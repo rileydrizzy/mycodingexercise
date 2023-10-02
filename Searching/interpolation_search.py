@@ -2,7 +2,6 @@
 """
 import random
 
-
 def interpolation_search(item,array):
     first_idx = 0
     last_idx = len(array) -1
@@ -22,12 +21,12 @@ def interpolation_search(item,array):
 
 #STRESS TEST
 def stress_test():
-    sample = sorted([random.randint(0,500) for num in range(10)])
+    sample = sorted([random.randint(0,70) for num in range(10)])
     item = random.choice(sample)
     answer = interpolation_search(item, sample)
     return (answer, sample, item)
 
-for no_iter in range(100):
+for no_iter in range(1000):
     result, array_, item_ = stress_test()
     if result != array_.index(item_):
         print(array_, item_)
