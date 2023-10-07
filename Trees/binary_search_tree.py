@@ -16,7 +16,7 @@ class BinarySearchTree:
         self.root_node = None
         self.count = 0
 
-    def insert(self,data):
+    def insert(self,data)-> None:
         """_summary_
 
         Parameters
@@ -44,7 +44,7 @@ class BinarySearchTree:
                     return
                 current_node = current_node.leftchild
 
-    def _get_parent(self, data):
+    def _get_parent(self, data)-> None:
         current_node = self.root_node
         parent_node = None
         if current_node is None:
@@ -60,7 +60,7 @@ class BinarySearchTree:
                 current_node = current_node.rightchild
         return  (current_node, parent_node)
 
-    def delete(self, data):
+    def delete(self, data)-> bool:
         current, parent = self._get_parent(data)
         if current is None and parent is None:
             print("Not Found")
@@ -82,7 +82,7 @@ class BinarySearchTree:
             else:
                 self.root_node = None
 # Delete a node that has one child
-        if no_childern_count == 1:
+        elif no_childern_count == 1:
             if current.leftchild:
                 next_node = current.leftchild
             else:
@@ -95,10 +95,60 @@ class BinarySearchTree:
             else:
                 self.root_node = next_node
         # Delete a node that has two childs
-       
+        else:
+            parent_of_leftmost = current
+            leftmost = current.rightchild
+            while leftmost.leftchild:
+                parent_of_leftmost = leftmost
+                leftmost = leftmost.leftchild
+            current.data = leftmost.data
+
+            if parent_of_leftmost.leftchild == leftmost:
+                parent_of_leftmost.leftchild = leftmost.rightchild
+            else:
+                parent_of_leftmost.rightchild = leftmost.rightchild
         self.count-= 1
 
-    def inorder_traveral(self):
+    def max_node(self)-> int:
+        """_summary_
+
+        Returns
+        -------
+        _type_
+            _description_
+        """
+        curr_node = self.root_node
+        parent = None
+        while curr_node:
+            parent = curr_node
+            curr_node = curr_node.rightchild
+        return parent.data
+
+    def min_node(self)-> int:
+        """_summary_
+
+        Returns
+        -------
+        _type_
+            _description_
+        """
+        curr_node = self.root_node
+        parent = None
+        while curr_node:
+            parent = curr_node
+            curr_node = curr_node.leftchild
+        return parent.data
+
+    def search(self, item)-> object:
+        current = self.root_node
+        while current is not None and current.data == item:
+            if current.data < item:
+                current = current.leftchild
+            else:
+                current = current.rightchild
+        return current
+
+    def inorder_traveral(self)-> object:
         tree = self.root_node
         stack, result = [], []
         while stack or tree:
@@ -118,44 +168,6 @@ class BinarySearchTree:
         self.inorder(curr_root.leftchild)
         print(curr_root.data)
         self.inorder(curr_root.rightchild)
-
-    def max_node(self):
-        """_summary_
-
-        Returns
-        -------
-        _type_
-            _description_
-        """
-        curr_node = self.root_node
-        parent = None
-        while curr_node:
-            parent = curr_node
-            curr_node = curr_node.rightchild
-        return parent.data
-
-    def min_node(self):
-        """_summary_
-
-        Returns
-        -------
-        _type_
-            _description_
-        """
-        curr_node = self.root_node
-        parent = None
-        while curr_node:
-            parent = curr_node
-            curr_node = curr_node.leftchild
-        return parent.data
-    def search(self, item):
-        current = self.root_node
-        while current is not None and current.data == item:
-            if current.data < item:
-                current = current.leftchild
-            else:
-                current = current.rightchild
-        return current
 # Test
 def test():
     """_summary_
@@ -168,13 +180,15 @@ def test():
     bst_tree.insert(1)
     print(bst_tree.min_node())
     print(bst_tree.max_node())
-
+    print(bst_tree.root_node.data)
     node = bst_tree.search(9)
     print(f'node is {node.data}')
-    #bst_tree.delete(9)
-    #bst_tree.search(9)
+    bst_tree.delete(9)
+    print(bst_tree.search(9))
+    bst_tree.delete(5)
     print(bst_tree.inorder_traveral())
     print(bst_tree.min_node())
     print(bst_tree.max_node())
+    print(bst_tree.root_node.data)
 
 test()

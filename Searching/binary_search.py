@@ -4,9 +4,22 @@ by using divide and conquer techqniues. This Search algorithm has a time complex
 BIG O(logn) and Space comlextiy of Constant space O(1).
 """
 import random
-import numpy as np
 
 def binary_search(item,array):
+    """_summary_
+
+    Parameters
+    ----------
+    item : _type_
+        _description_
+    array : _type_
+        _description_
+
+    Returns
+    -------
+    _type_
+        _description_
+    """
     first_index = 0
     last_index = len(array)-1
     while first_index <= last_index:
@@ -21,14 +34,17 @@ def binary_search(item,array):
 
 #STRESS TEST
 def stress_test():
-    sample = sorted(np.random.randint(1,500,size=10))
-    item = random.choice(sample)
-    answer = binary_search(item, sample)
-    return (answer, sample, item)
+    """_summary_
+    """
+    def random_sorted_list():
+        sample = sorted(random.sample(range(0, 1000+ 1), 10))
+        item = random.choice(sample)
+        answer = binary_search(item, sample)
+        return (answer, sample, item)
+    for _ in range(10000):
+        result, array_, item_ = random_sorted_list()
+        if result != array_.index(item_):
+            print(array_, item_)
+    print('Stress testing done')
 
-for no_iter in range(100):
-    result, array_, item_ = stress_test()
-    if result != array_.index(item_):
-        print(array_, item_)
-
-print('Stress testing done')
+stress_test()
