@@ -2,7 +2,8 @@
 """
 import random
 
-def interpolation_search(array,item):
+
+def interpolation_search(array, item):
     """_summary_
 
     Parameters
@@ -17,10 +18,13 @@ def interpolation_search(array,item):
     _type_
         _description_
     """
-    first_idx, last_idx = 0, len(array) -1
+    first_idx, last_idx = 0, len(array) - 1
     while first_idx <= last_idx:
-        mid_idx = first_idx + ((last_idx - first_idx) * (item - array[first_idx])\
-                                /(array[last_idx]- array[first_idx]))
+        mid_idx = first_idx + (
+            (last_idx - first_idx)
+            * (item - array[first_idx])
+            / (array[last_idx] - array[first_idx])
+        )
         mid_idx = int(mid_idx)
         if array[mid_idx] == item:
             return mid_idx
@@ -31,19 +35,21 @@ def interpolation_search(array,item):
     return -1
 
 
-#STRESS TEST
+# STRESS TEST
 def stress_test():
-    """_summary_
-    """
+    """_summary_"""
+
     def random_sorted_list():
-        sample_arr = sorted(random.sample(range(0, 1000+ 1), 10))
+        sample_arr = sorted(random.sample(range(0, 1000 + 1), 10))
         item = random.choice(sample_arr)
         answer = interpolation_search(sample_arr, item)
         return (answer, sample_arr, item)
+
     for _ in range(1000000):
         result, array_, item_ = random_sorted_list()
         if result != array_.index(item_):
             print(array_, item_)
-    print('Stress testing done')
+    print("Stress testing done")
+
 
 stress_test()

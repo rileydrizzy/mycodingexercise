@@ -1,30 +1,33 @@
 """doc
 """
+
+
 class HashItem:
-    """_summary_
-    """
-    def __init__(self,key,value) -> None:
+    """_summary_"""
+
+    def __init__(self, key, value) -> None:
         self.key = key
         self.value = value
 
-class HashTable():
-    """_summary_
-    """
-    def __init__(self,size) -> None:
+
+class HashTable:
+    """_summary_"""
+
+    def __init__(self, size) -> None:
         self.size = size
         self.slots = [None for num in range(self.size)]
         self._max_load_factor = 0.65
         self._count = 0
 
-    def _hash(self,key):
+    def _hash(self, key):
         hash_value = 0
         mutli = 0
         for char in key:
             hash_value = mutli * ord(char)
-            mutli+= 1
+            mutli += 1
         return hash_value % self.size
 
-    def put(self,key, data):
+    def put(self, key, data):
         """_summary_
 
         Parameters
@@ -34,16 +37,16 @@ class HashTable():
         data : _type_
             _description_
         """
-        item = HashItem(key,data)
+        item = HashItem(key, data)
         hashval = self._hash(key)
         j = 1
         while self.slots[hashval] is not None:
             if self.slots[hashval].key == key:
                 break
-            hashval = (hashval + j*j) % self.size
+            hashval = (hashval + j * j) % self.size
             j += 1
         if self.slots[hashval] is None:
-            self._count +=1
+            self._count += 1
         self.slots[hashval] = item
         self._check_growth()
 
@@ -58,12 +61,12 @@ class HashTable():
         self.slots = new_hashtable.slots
 
     def _check_growth(self):
-        load_factor = self._count/self.size
+        load_factor = self._count / self.size
         if load_factor > self._max_load_factor:
             print("Growing Hashtable")
             self._growth()
 
-    def get(self,key):
+    def get(self, key):
         """_summary_
 
         Parameters
@@ -81,18 +84,19 @@ class HashTable():
         while self.slots[hashval] is not None:
             if self.slots[hashval].key == key:
                 return self.slots[hashval].value
-            hashval = (hashval + j*j) % self.size
+            hashval = (hashval + j * j) % self.size
         return None
 
     # Implementing hashtable as a dictionary
-    def __setitem__(self,key,value):
-        self.put(key,value)
+    def __setitem__(self, key, value):
+        self.put(key, value)
 
     def __getitem__(self, key):
         return self.get(key)
 
+
 # Test
-Table = HashTable(size= 3)
+Table = HashTable(size=3)
 Table.put("good", "eggs")
 Table.put("better", "ham")
 Table.put("best", "spam")
