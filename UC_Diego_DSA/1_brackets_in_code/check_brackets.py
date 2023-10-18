@@ -24,7 +24,7 @@ def are_matching(left, right):
 
 
 def find_mismatch(text):
-    """ doc
+    """ Find the postion of the first unmacthed brackets
 
     Parameters
     ----------
@@ -59,7 +59,7 @@ def find_mismatch(text):
         return 'Success'
 
 def main():
-    """run the
+    """run the main program
     """
     text = input()
     mismatch = find_mismatch(text)

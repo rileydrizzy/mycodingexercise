@@ -5,7 +5,7 @@ import sys
 import threading
 
 class TreeNode:
-    """_summary_
+    """Node object
     """
     def __init__(self, parent) -> None:
         self.leftchild = None
@@ -13,12 +13,12 @@ class TreeNode:
         self.parent = parent
 
 def compute_height(root):
-    """_summary_
+    """returns the height of a binary tree
 
     Parameters
     ----------
     root : object
-        _description_
+        root of a binary
 
     Returns
     -------
@@ -32,19 +32,19 @@ def compute_height(root):
         return 1 + max(compute_height(root.leftchild), compute_height(root.rightchild))
 
 def build_tree(parents_arr, number):
-    """_summary_
+    """d
 
     Parameters
     ----------
     parents_arr : list
-        _description_
+        List with int of the 
     number : int
-        _description_
+        Total number of of node
 
     Returns
     -------
     object
-        _description_
+        root of the binary tree
     """
     for idx in range(number):
         parents_arr[idx] = TreeNode(parents_arr[idx])
@@ -60,7 +60,7 @@ def build_tree(parents_arr, number):
     return root
 
 def main():
-    """_summary_
+    """run main program
     """
     num_node = int(input())
     parents = list(map(int, input().split()))
