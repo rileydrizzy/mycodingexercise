@@ -13,16 +13,3 @@ set of lectures and programming assignments.
 
 This repository contains solutions to all assignments from the above courses, written in the following
 programming languages: Python. Stress testing framework is also provided.
-
-## Info
-
-C++ files should be compiled with the following command:
-
-```bash
-g++ -pipe -O2 -std=c++11 "<filename>"
-```
-
-#### TODO
-
-- [ ] Move stress testing function out of the main scripts
-- [ ] Add multithreading to the testing process for speedup
