@@ -4,13 +4,15 @@
 import sys
 import threading
 
+
 class TreeNode:
-    """Node object
-    """
+    """Node object"""
+
     def __init__(self, parent) -> None:
         self.leftchild = None
         self.rightchild = None
         self.parent = parent
+
 
 def compute_height(root):
     """returns the height of a binary tree
@@ -23,7 +25,7 @@ def compute_height(root):
     Returns
     -------
     int
-        The height of the tree 
+        The height of the tree
     """
 
     if not root:
@@ -31,13 +33,14 @@ def compute_height(root):
     else:
         return 1 + max(compute_height(root.leftchild), compute_height(root.rightchild))
 
+
 def build_tree(parents_arr, number):
     """d
 
     Parameters
     ----------
     parents_arr : list
-        List with int of the 
+        List with int of the
     number : int
         Total number of of node
 
@@ -59,17 +62,18 @@ def build_tree(parents_arr, number):
                 parents_arr[parent_node.parent].rightchild = parents_arr[idx]
     return root
 
+
 def main():
-    """run main program
-    """
+    """run main program"""
     num_node = int(input())
     parents = list(map(int, input().split()))
     tree_root = build_tree(parents, num_node)
     print(compute_height(tree_root))
 
+
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
 # of bigger stack, we have to launch the computation in a new thread.
 sys.setrecursionlimit(10**7)  # max depth of recursion
-threading.stack_size(2**27)   # new thread will get stack of such size
+threading.stack_size(2**27)  # new thread will get stack of such size
 threading.Thread(target=main).start()

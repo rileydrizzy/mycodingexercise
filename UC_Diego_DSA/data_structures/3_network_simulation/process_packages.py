@@ -13,7 +13,7 @@ class Buffer:
 
     def process(self, request):
         # write your code here
-        
+
         return Response(False, -1)
 
 
@@ -25,9 +25,8 @@ def process_requests(requests, buffer):
 
 
 def main():
-    """_summary_
-    """
- 
+    """_summary_"""
+
     buffer_size, n_requests = map(int, input().split())
     requests = []
     for _ in range(n_requests):

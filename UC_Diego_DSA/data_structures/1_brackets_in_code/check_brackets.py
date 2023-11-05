@@ -5,6 +5,7 @@ from collections import namedtuple
 
 Bracket = namedtuple("Bracket", ["char", "position"])
 
+
 def are_matching(left, right):
     """check if the opening brackect matches the closing bracket
 
@@ -24,7 +25,7 @@ def are_matching(left, right):
 
 
 def find_mismatch(text):
-    """ Find the postion of the first unmacthed brackets
+    """Find the postion of the first unmacthed brackets
 
     Parameters
     ----------
@@ -39,7 +40,7 @@ def find_mismatch(text):
 
     opening_brackets_stack = []
     for pos_idx, char in enumerate(text):
-        item = Bracket(char, pos_idx+1)
+        item = Bracket(char, pos_idx + 1)
         if item.char in "([{":
             # Process opening bracket
             opening_brackets_stack.append(item)
@@ -56,14 +57,15 @@ def find_mismatch(text):
         item = opening_brackets_stack.pop()
         return item.position
     else:
-        return 'Success'
+        return "Success"
+
 
 def main():
-    """run the main program
-    """
+    """run the main program"""
     text = input()
     mismatch = find_mismatch(text)
     print(mismatch)
+
 
 if __name__ == "__main__":
     main()
