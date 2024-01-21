@@ -1,15 +1,13 @@
-"""doc priorityqueue min heaps
+"""doc priorityqueue min heaps done from replit
 """
 
 class Node:
-    """_summary_
-    """
     def __init__(self,data, priority) -> None:
         self.data = data
         self.priority = priority
 
 class PriorityQueueHeap:
-    """_summary_
+    """Pirioty Queue Data Struture
     """
     def __init__(self) -> None:
         self.heap_array = [0]
