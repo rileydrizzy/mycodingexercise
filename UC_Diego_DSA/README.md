@@ -11,5 +11,5 @@ set of lectures and programming assignments.
 5. [Advanced Algorithms and Complexity](https://www.coursera.org/learn/advanced-algorithms-and-complexity?specialization=data-structures-algorithms)
 6. [Genome Assembly Programming Challenge](https://www.coursera.org/learn/assembling-genomes?specialization=data-structures-algorithms)
 
-This repository contains solutions to all assignments from the above courses, written in the following
+This repository contains my solutions to all assignments from the above courses, written in the following
 programming languages: Python. Stress testing framework is also provided.
