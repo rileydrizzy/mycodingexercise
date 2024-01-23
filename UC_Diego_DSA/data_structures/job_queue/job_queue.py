@@ -1,19 +1,44 @@
 # python3
-
 from collections import namedtuple
 
-AssignedJob = namedtuple("AssignedJob", ["worker", "started_at"])
+AssignedJob = namedtuple("AssignedJob", ["worker_id", "started_at"])
 
 
 def assign_jobs(n_workers, jobs):
-    # TODO: replace this code with a faster algorithm.
+    workers = [AssignedJob(i, 0) for i in range(5)]
     result = []
-    next_free_time = [0] * n_workers
-    for job in jobs:
-        next_worker = min(range(n_workers), key=lambda w: next_free_time[w])
-        result.append(AssignedJob(next_worker, next_free_time[next_worker]))
-        next_free_time[next_worker] += job
 
+    def arrange(idx=0):
+        def minichld(idx):
+            left_child = idx * 2 + 1
+            right_child = idx * 2 + 2
+            if right_child > n_workers:
+                return left_child
+            elif workers[left_child].started_at == workers[
+                    right_child].started_at:
+                if workers[left_child].worker_id < workers[
+                        right_child].worker_id:
+                    return left_child
+                else:
+                    return right_child
+            elif workers[left_child].started_at < workers[
+                    right_child].started_at:
+                return left_child
+            else:
+                return right_child
+
+        # arange code
+        while idx * 2 + 1 <= n_workers:
+            mc = minichld(idx)
+            if workers[mc].started_at < workers[idx].started_at:
+                workers[mc], workers[idx] = workers[mc], workers[idx]
+            idx = mc
+
+    #main code
+    for job in jobs:
+		active_worker = workers[0]
+		result.append(active_worker)
+        next_free_time[next_worker] += job
     return result
 
 
@@ -25,7 +50,7 @@ def main():
     assigned_jobs = assign_jobs(n_workers, jobs)
 
     for job in assigned_jobs:
-        print(job.worker, job.started_at)
+        print(job.worker_id, job.started_at)
 
 
 if __name__ == "__main__":
