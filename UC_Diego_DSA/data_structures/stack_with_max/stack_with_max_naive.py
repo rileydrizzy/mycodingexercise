@@ -1,9 +1,10 @@
-#python3
+# python3
 import sys
 
-class StackWithMax():
-    """_summary_
-    """
+
+class StackWithMax:
+    """_summary_"""
+
     def __init__(self):
         self.__stack = []
 
@@ -19,7 +20,7 @@ class StackWithMax():
         return max(self.__stack)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     stack = StackWithMax()
 
     num_queries = int(sys.stdin.readline())
@@ -33,4 +34,4 @@ if __name__ == '__main__':
         elif query[0] == "max":
             print(stack.Max())
         else:
-            assert(0)
+            assert 0
