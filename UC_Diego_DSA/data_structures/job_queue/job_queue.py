@@ -20,7 +20,7 @@ class ParallelProcces:
     def _get_minichld(self, idx):
         left_child = idx * 2 + 1
         right_child = idx * 2 + 2
-        if right_child > self.num_workers:
+        if right_child + 1 > self.num_workers:
             return left_child
         elif (
             self.workers[left_child].finish_time
@@ -39,25 +39,29 @@ class ParallelProcces:
 
     def arrange(self, idx=0):
         # Arrange code
-        while idx * 2 + 1 <= self.num_workers:
-            print(idx)
+        while idx * 2 + 2 <= self.num_workers:
             mc = self._get_minichld(idx)
             if self.workers[mc].finish_time < self.workers[idx].finish_time:
                 self.workers[mc], self.workers[idx] = (
                     self.workers[idx],
                     self.workers[mc],
                 )
-                idx = mc
+            if self.workers[mc].finish_time == self.workers[idx].finish_time:
+                if self.workers[mc].worker_id < self.workers[idx].worker_id:
+                    self.workers[mc], self.workers[idx] = (
+                        self.workers[idx],
+                        self.workers[mc],
+                    )
+
+            idx = mc
 
     def assign_jobs(self, jobs):
         # Main code
         for job_ in jobs:
-            print("Start Debug")
             active_worker = self.workers[0]
             self.result.append((active_worker.worker_id, active_worker.finish_time))
             active_worker.finish_time += job_
             self.arrange()
-            print("End Debug")
         return self.result
 
 
