@@ -6,7 +6,7 @@ Typically, the question is accompanied by an indication of where the question or
 
 This is to help readers understand the code better and to enable them to apply the same concepts to similar problems.
 
-The solutions were written in Python 3 in accordance with the PEP style guide.
+The solutions were written in Python 3 in accordance with the PEP style guide and also written in C.
 
 I would like to express my thanks to Chip Huyen (@chiphuyen) who provided inspiration for this.
 
