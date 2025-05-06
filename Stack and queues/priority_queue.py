@@ -69,7 +69,7 @@ class PriorityQueueHeap:
 priorityqueue = PriorityQueueHeap()
 array = [(2,'bat'),(13,'Cat'),(18,'Rat'),(26,'Ant'),(3,'Lion'),(4,'Bear') ]
 for element in array:
-    print(element[1],element[0])
+    y5609print(element[1],element[0])
 for element in array:
     priorityqueue.insert(element[1],element[0])
 

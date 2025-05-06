@@ -1,25 +1,67 @@
-"""doc
+"""
+hashtable.py
+
+This module contains the implementation of a simple hash table with basic operations such as insertion and hashing.
+
+Classes:
+    HashItem: Represents an item in the hash table.
+    HashTable: Represents the hash table with methods to insert and hash items.
 """
 
-
 class HashItem:
-    """_summary_"""
+    """
+    Represents an item in the hash table.
+
+    Attributes:
+        key: The key associated with the item.
+        value: The value associated with the item.
+    """
 
     def __init__(self, key, value) -> None:
+        """
+        Initializes a new HashItem with the given key and value.
+
+        Args:
+            key: The key associated with the item.
+            value: The value associated with the item.
+        """
         self.key = key
         self.value = value
 
 
 class HashTable:
-    """_summary_"""
+    """
+    Represents the hash table.
+
+    Attributes:
+        size: The size of the hash table.
+        slots: The slots in the hash table.
+        _max_load_factor: The maximum load factor before resizing.
+        _count: The current number of items in the hash table.
+    """
 
     def __init__(self, size) -> None:
+        """
+        Initializes a new HashTable with the given size.
+
+        Args:
+            size: The size of the hash table.
+        """
         self.size = size
         self.slots = [None for num in range(self.size)]
         self._max_load_factor = 0.65
         self._count = 0
 
     def _hash(self, key):
+        """
+        Computes the hash value for a given key.
+
+        Args:
+            key: The key to hash.
+
+        Returns:
+            The hash value of the key.
+        """
         hash_value = 0
         mutli = 0
         for char in key:
@@ -28,14 +70,12 @@ class HashTable:
         return hash_value % self.size
 
     def put(self, key, data):
-        """_summary_
+        """
+        Inserts a key-value pair into the hash table.
 
-        Parameters
-        ----------
-        key : _type_
-            _description_
-        data : _type_
-            _description_
+        Args:
+            key: The key to insert.
+            data: The value to insert.
         """
         item = HashItem(key, data)
         hashval = self._hash(key)
@@ -67,17 +107,14 @@ class HashTable:
             self._growth()
 
     def get(self, key):
-        """_summary_
+        """
+        Retrieves the value associated with the given key from the hash table.
 
-        Parameters
-        ----------
-        key : _type_
-            _description_
+        Args:
+            key: The key to retrieve.
 
-        Returns
-        -------
-        _type_
-            _description_
+        Returns:
+            The value associated with the key, or None if the key is not found.
         """
         hashval = self._hash(key)
         j = 1
