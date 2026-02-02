@@ -1,20 +1,20 @@
-# Data Structures
+# Data Structures and Algorithms
 
-This repository contains my implementation of useful data structures, algorithms, and programs, as well as my solutions to programming puzzles. There are detailed explanations of each question included in the solution files for the programming puzzles.
+This repository contains implementations of useful data structures, algorithms, and solutions to programming puzzles. Detailed explanations are provided within the solution files.
 
-Typically, the question is accompanied by an indication of where the question originated, e.g. Leetcode, Hackerank, etc. All of the solutions are thoroughly tested to ensure correctness, and I provide commentary to explain how my solution works.
+Questions typically include their origin (e.g., LeetCode, HackerRank). All solutions are thoroughly tested and include commentary to explain the logic, helping readers understand the code and apply the concepts to similar problems.
 
-This is to help readers understand the code better and to enable them to apply the same concepts to similar problems.
+Solutions are implemented in:
+*   **Python 3** (following PEP 8 style guidelines)
+*   **C**
 
-The solutions were written in Python 3 in accordance with the PEP style guide and also written in C.
-
-I would like to express my thanks to Chip Huyen (@chiphuyen) who provided inspiration for this.
+*Special thanks to Chip Huyen (@chiphuyen) for the inspiration.*
 
 ## Linked Lists
 
-* Single Linked List (linked_list.py)
-* Double Linked List
-* Circular Single Linked List
-* Circular Double Linked List
+*   Single Linked List (`linked_list.py`)
+*   Double Linked List
+*   Circular Single Linked List
+*   Circular Double Linked List
 
-## Stack and Queues
+## Stacks and Queues
